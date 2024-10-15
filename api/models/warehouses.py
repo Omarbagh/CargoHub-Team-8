@@ -43,6 +43,7 @@ class Warehouses(Base):
             f = open(self.data_path, "r")
             self.data = json.load(f)
             f.close()
+        
 
     def save(self):
         f = open(self.data_path, "w")

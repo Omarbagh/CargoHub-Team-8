@@ -1,19 +1,23 @@
 import unittest
-from models import orders
+# from models import orders
 import json
+from api.models.orders import Orders
+
 
 class TestOrders(unittest.TestCase):
-    
+
     @classmethod
     def setUpClass(cls):
-        cls.orders_instance = orders.Orders("path/to/your/root/", is_debug=True)
+        cls.orders_instance = Orders(
+            "path/to/your/root/", is_debug=True)
 
     def test_get_order_by_id(self):
         with open('data/orders.json') as file:
             expected_data = json.load(file)
-        
-        result = self.orders_instance.get_order_by_id(1)  # assuming `get_order_by_id` is the method
-        
+
+        result = self.orders_instance.get_order_by_id(
+            1)  # assuming `get_order_by_id` is the method
+
         self.assertEqual(result, expected_data.get('id') == 1)
 
     def test_get_order_invalid_id(self):
@@ -53,8 +57,10 @@ class TestOrders(unittest.TestCase):
 
         result = self.orders_instance.get_order_by_id(1)
 
-        self.assertIsNotNone(result, "Order with ID 1 should be added but returned None")
+        self.assertIsNotNone(
+            result, "Order with ID 1 should be added but returned None")
         self.assertEqual(result["id"], new_order["id"])
+
 
 if __name__ == '__main__':
     unittest.main()

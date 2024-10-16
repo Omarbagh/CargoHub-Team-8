@@ -5,7 +5,7 @@ from models.items import Items
 
 
 class TestItems:
-    @pytest.fixture(autouse=True)
+
     def setup(self):
         self.item_file = 'data/items.json'
 

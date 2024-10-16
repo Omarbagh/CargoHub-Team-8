@@ -5,7 +5,6 @@ from models.locations import Locations
 
 
 class TestLocations:
-    @pytest.fixture(autouse=True)
     def setup(self):
         self.location_file = 'data/locations.json'
 
